@@ -6,7 +6,7 @@
 //  Copyright © 2016年 molon. All rights reserved.
 //
 
-#import <MBProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
