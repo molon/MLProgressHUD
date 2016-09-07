@@ -77,7 +77,7 @@
     MLProgressHUD *hud = [[self class] showHUDAddedTo:view animated:YES];
     hud.removeFromSuperViewOnHide = YES;
     hud.contentColor = [UIColor whiteColor];
-    hud.color = [UIColor colorWithWhite:0.000 alpha:0.696];
+    hud.bezelView.color = [UIColor colorWithWhite:0.000 alpha:0.696];
     
     hud.userInteractionEnabled = userInteractionEnabled;
     
@@ -118,7 +118,7 @@
     
     hud = [[self class] showHUDAddedTo:view animated:YES];
     hud.contentColor = [UIColor whiteColor];
-    hud.color = [UIColor colorWithWhite:0.000 alpha:0.696];
+    hud.bezelView.color = [UIColor colorWithWhite:0.000 alpha:0.696];
     hud.mode = MBProgressHUDModeIndeterminate;
     
     CGPoint offset = hud.offset;
