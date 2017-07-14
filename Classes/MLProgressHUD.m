@@ -111,12 +111,12 @@
     }
     
     MBProgressHUD *hud = [[self class]HUDForView:view];
-    if (hud&&hud.mode == MBProgressHUDModeIndeterminate) {
-        NSAssert([hud isKindOfClass:[MLProgressHUD class]], @"Please only use MLProgressHUD!");
-        return (MLProgressHUD*)hud;
+    if (!hud||hud.mode != MBProgressHUDModeIndeterminate) {
+        hud = [[self class] showHUDAddedTo:view animated:YES];
     }
     
-    hud = [[self class] showHUDAddedTo:view animated:YES];
+    NSAssert([hud isKindOfClass:[MLProgressHUD class]], @"Please only use MLProgressHUD!");
+    
     hud.contentColor = [UIColor whiteColor];
     hud.bezelView.color = [UIColor colorWithWhite:0.000 alpha:0.696];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -125,12 +125,12 @@
     offset.y = yOffset;
     hud.offset = offset;
     
-    if (message.length>0) {
+//    if (message.length>0) {
         hud.label.text = message;
-    }
-    if (detailMessage.length>0) {
+//    }
+//    if (detailMessage.length>0) {
         hud.detailsLabel.text = detailMessage;
-    }
+//    }
     
     return (MLProgressHUD*)hud;
 }
