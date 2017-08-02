@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Show indeterminate hud on view conveniently
+ @warning it will not add a new one if there is a indeterminate hud exist
  
  @param view          view
  @param message       message
@@ -38,6 +39,15 @@ NS_ASSUME_NONNULL_BEGIN
  @return instance
  */
 + (instancetype)showIndeterminateHUDOnView:(UIView*)view message:(nullable NSString*)message detailMessage:(nullable NSString*)detailMessage yOffset:(CGFloat)yOffset;
+
+/*!
+ Returns the first indeterminate hud on view
+ 
+ @param view view
+ 
+ @return instance
+ */
++ (MBProgressHUD *)indeterminateHUDForView:(UIView *)view;
 
 /**
  Hide all indeterminate huds conveniently

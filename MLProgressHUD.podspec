@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "MLProgressHUD"
-s.version      = "1.0.4"
+s.version      = "1.0.5"
 s.summary      = "Just a subclass of MBProgressHUD for myself, Please dont pay attention to it."
 
 s.homepage     = 'https://github.com/molon/MLProgressHUD'

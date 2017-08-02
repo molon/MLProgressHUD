@@ -104,13 +104,26 @@
     return hud;
 }
 
++ (MBProgressHUD *)indeterminateHUDForView:(UIView *)view {
+    NSEnumerator *subviewsEnum = [view.subviews reverseObjectEnumerator];
+    for (UIView *subview in subviewsEnum) {
+        if ([subview isKindOfClass:self]) {
+            MBProgressHUD *h = (MBProgressHUD*)subview;
+            if (h.mode == MBProgressHUDModeIndeterminate) {
+                return h;
+            }
+        }
+    }
+    return nil;
+}
+
 + (instancetype)showIndeterminateHUDOnView:(UIView*)view message:(nullable NSString*)message detailMessage:(nullable NSString*)detailMessage yOffset:(CGFloat)yOffset {
     NSAssert(view,@"`view` cant be nil -> %@",NSStringFromSelector(_cmd));
     if (!view) {
         return nil;
     }
     
-    MBProgressHUD *hud = [[self class]HUDForView:view];
+    MBProgressHUD *hud = [[self class]indeterminateHUDForView:view];
     if (!hud||hud.mode != MBProgressHUDModeIndeterminate) {
         hud = [[self class] showHUDAddedTo:view animated:YES];
     }
@@ -125,12 +138,8 @@
     offset.y = yOffset;
     hud.offset = offset;
     
-//    if (message.length>0) {
-        hud.label.text = message;
-//    }
-//    if (detailMessage.length>0) {
-        hud.detailsLabel.text = detailMessage;
-//    }
+    hud.label.text = message;
+    hud.detailsLabel.text = detailMessage;
     
     return (MLProgressHUD*)hud;
 }
